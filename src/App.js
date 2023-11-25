@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {Route, Routes, BrowserRouter as Router}  from 'react-router-dom'
 
-function App() {
+import ForgetPassword from "./pages/ForgetPassword";
+import LoginRegister from "./pages/LoginRegister"
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import ProfilePage from "./pages/ProfilePage";
+import AdminPanel from "./pages/AdminPanel";
+import RegisterAdmin from "./pages/RegisterAdmin";
+import DoctorDashboard from "./pages/DoctorDashboard";
+import PatientDashboard from "./pages/PatientDashboard";
+
+const App = ()=> {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/login-register" element={<LoginRegister/>}/>
+        <Route path="/reset-password" element={<ForgetPassword/>}/>
+        <Route path="/profile" element={<ProfilePage/>}/>
+        <Route path="/doctor-dashboard" element={<DoctorDashboard/>}/>
+        <Route path="/patient-dashboard" element={<PatientDashboard/>}/>
+        <Route path="/admin-dashboard" element={<AdminPanel/>}/>
+        <Route path="/register-admin" element={<RegisterAdmin/>}/>
+      </Routes>
+    </Router>
+    <Footer/>
+    </React.Fragment>
   );
 }
 
